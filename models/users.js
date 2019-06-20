@@ -2,13 +2,11 @@ const User = require('../lib/mongo').User
 
 module.exports = {
   // 注册一个用户
-  create: function create(user) {
-    console.log(user)
-    let result = User.insertOne(user)
-    return result.exec()
+  create: function create(user, cb) {
+    return User.create(user, cb)
   },
   // 通过用户名获取用户信息
   getUserByName: function getUserByName(name) {
-    return User.findOne({ name: name }).addCreatedAt().exec()
+    return User.findOne({ name: name }).exec()
   }
 }

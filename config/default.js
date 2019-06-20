@@ -5,7 +5,7 @@ const defaultConfig = {
     key: 'myblog',
     maxAge: 100000
   },
-  mongodb: 'mongodb://localhost:27017/myblog'
+  mongodb: 'mongodb://localhost:27017/newblog'
 }
 
 module.exports = defaultConfig;

@@ -41,14 +41,16 @@ router.post('/create', checkLogin, function (req, res, next) {
     content: content
   }
 
-  PostModel.create(post)
-    .then(function (result) {
+  PostModel.create(post, function (err, post) {
+    if (err) {
+      next()
+    } else {
       // 此post是插入mongodb后的值，包含_id
-      post = result.ops[0]
       req.flash('success', '发表成功')
       // 发表成功后跳转到该文章页
       res.redirect(`/posts/${post._id}`)
-    }).catch(next)
+    }
+  })
 })
 
 // GET /posts/create 发表文章页
@@ -125,7 +127,7 @@ router.post('/:postId/edit', checkLogin, function (req, res, next) {
       if (post.author._id.toString !== author.toString()) {
         throw new Error('没有权限')
       }
-      PostModel.updatePostById(postId, {title: title, content: content})
+      PostModel.updatePostById(postId, { title: title, content: content })
         .then(function () {
           req.flash('success', '编辑文章成功')
           // 编辑成功后跳转到上一页
