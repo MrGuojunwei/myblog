@@ -31,7 +31,7 @@
     "express-session": "^1.16.2",
     "express-winston": "^3.2.0",
     "jquery": "^3.4.1",
-    "marked": "^0.6.2",
+    "marked": "^1.1.1",
     "moment": "^2.24.0",
     "mongolass": "^4.4.2",
     "mongoose": "^5.6.0",
